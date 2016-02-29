@@ -31,24 +31,40 @@ class GroceryList:
   def __getitem__(self, index):
     return self.at(index)
 
+  # if u want to do it recursively
+  # call with
+  # groceries.display(groceries.head)
+
+  # def display(self, node):
+  #   if node != None:
+  #     print(node.data)
+  #     self.display(node.next)
+
   def display(self):
-    print("Apples")
-    print("Bananas")
-    print("Cookies")
+    current_node = self.head
+    while current_node != None:
+      print(current_node.data)
+      current_node = current_node.next
 
   def remove_all(self):
     self.head = None
 
   def append(self, data):
+    # each time we create a new instance and then append
+    # it to the head to keep it around
+    # new_item is just temporary holding space
     new_item = Item()
     new_item.data = data
 
+    # first item gets defined
     if self.head is None:
       self.head = new_item
     else:
       current_item = self.head
       while (current_item.next != None):
+        # after the second item, cycle over to the last item defined
         current_item = current_item.next
+      # last item gets defined
       current_item.next = new_item
 
   def at(self, position):
