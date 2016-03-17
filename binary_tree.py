@@ -73,6 +73,7 @@ class GroceryList:
   
   def contains(self, data):
     current_node = self.root
+    # stop when you are at the end or when you found it
     while current_node != None and current_node.data != data:
       if data < current_node.data:
         current_node = current_node.left
